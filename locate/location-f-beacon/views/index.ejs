@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src='/javascripts/grid.js'></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@1.8.0"></script>
+    
+  </head>
+  <body>
+  <!--<button onclick="init_canvas();">クリア</button>-->
+
+ <!--
+  <div id="beacon-status-grid">
+    <canvas id="MyCanvas" style="padding:0;"></canvas>
+    <div id="msg1"></div>
+    
+    <div id="msg3"></div>
+  </div>
+ -->
+  
+  <div id="wrap">
+    <div id="side_c">
+      <ul>
+        <li id="measure"><a href="/">距離測定</a></li>
+        <li id="destination">マップ</li>
+        <li id="db"><a href="/db">beacon登録</a></li>
+      </ul>
+    </div>
+  
+    <div id="main_c">
+      <div id="beacon-status-lists">
+        <!--
+        <div id="beacon-status-t">
+          <div id="beacon-status"></div>
+        </div>
+        -->
+        <div id="beacon-status-table">
+
+          <div id="table-chart1">
+            <div id="chart-div-value1"></div>
+            <div class="chart-div">
+              <canvas id="myChart1"></canvas>
+            </div>
+          </div>
+
+          <div id="table-chart2">
+            <div id="chart-div-value2"></div>
+            <div class="chart-div">
+              <canvas id="myChart2"></canvas>
+            </div>
+          </div>
+
+          <div id="table-chart3">
+            <div id="chart-div-value3"></div>
+            <div class="chart-div">
+              <canvas id="myChart3"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div id="beacon-status-child">
+        <div id="beacon-status-chart1">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+  <script>
+    var ctx1 = document.getElementById('myChart1').getContext('2d');
+    var chart = new Chart(ctx1, {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            data: [],
+            label: '受信結果',
+            borderColor: 'rgb(255, 99, 132)'
+          }, 
+        {
+          data: [],
+          label: '実測',
+          borderColor: 'rgb(54, 162, 235)'
+        }]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            type: 'realtime'
+          }]
+        },
+        plugins: {
+            streaming: {            
+                duration: 20000,    
+                refresh: 1000,      
+                delay: 1000,        
+                frameRate: 30,      
+                pause: false,
+                onRefresh: function(chart) {
+                    chart.data.datasets[0].data.push({
+                        x: Date.now(),
+                        y: getAvgDis(0)
+                    });
+                }
+            }
+        }
+      }
+    });
+    var ctx2 = document.getElementById('myChart2').getContext('2d');
+    var chart2 = new Chart(ctx2, {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            data: [],
+            label: '受信結果',
+            borderColor: 'rgb(255, 99, 132)'
+          }, 
+          {
+            data: [],
+            label: '実測',
+            borderColor: 'rgb(54, 162, 235)'
+          }]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            type: 'realtime'
+          }]
+        },
+        plugins: {
+            streaming: {            
+                duration: 20000,    
+                refresh: 1000,      
+                delay: 1000,        
+                frameRate: 30,      
+                pause: false,
+                onRefresh: function(chart2) {
+                    chart2.data.datasets[0].data.push({
+                        x: Date.now(),
+                        y: getAvgDis(1)
+                    });
+                }
+            }
+        }
+      }
+    });
+    var ctx3 = document.getElementById('myChart3').getContext('2d');
+    var chart3 = new Chart(ctx3, {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            data: [],
+            label: '受信結果',
+            borderColor: 'rgb(255, 99, 132)'
+            //backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          }, 
+          {
+            data: [],
+            label: '実測',
+            borderColor: 'rgb(54, 162, 235)'
+            //backgroundColor: 'rgba(54, 162, 235, 0.5)'
+          },
+          {
+            data: [
+              {
+                x: Date.now(),
+                y: 0
+              }
+            ],
+            label: ''
+          }
+        ]
+      },
+      options: {
+        scales: {
+          xAxes: [{
+            type: 'realtime'
+          }]
+        },
+        plugins: {
+            streaming: {            
+                duration: 20000,    
+                refresh: 1000,      
+                delay: 1000,        
+                frameRate: 30,      
+                pause: false,
+                onRefresh: function(chart3) {
+                    chart3.data.datasets[0].data.push({
+                        x: Date.now(),
+                        y: getAvgDis(2)
+                    });
+                    chart3.data.datasets[1].data.push({
+                        x: Date.now(),
+                        y: 0.8
+                    });
+                }
+            }
+        }
+      }
+    });
+  </script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src='/javascripts/dbController.js'></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@1.8.0"></script>
+    
+  </head>
+  <body>
+  
+  <div id="wrap">
+    <div id="side_c">
+      <ul>
+        <li id="measure"><a href="/">距離測定</a></li>
+        <li id="destination">マップ</li>
+        <li id="db"><a href="/db">beacon登録</a></li>
+      </ul>
+    </div>
+  
+    <div id="main_db">
+      <div class="element-update">
+
+      </div>
+      <div class="db_el up_img">
+        <div id="crate_input">
+          <form action="/upload" method="POST">
+          <div class="form-group">
+            <label for="beacon_id"> ID</label>
+            <input type="text" id="beacon_id" name="beacon_id" class="form-control" placeholder="例：1-2345" autofocus required>
+          </div>
+          <div class="form-group">
+            <label for="xPosition">X</label>
+            <input type="text" id="xPosition" name="xPosition" class="form-control" placeholder="例：1000" required>
+          </div>
+          <div class="form-group">
+            <label for="yPosition">Y</label>
+            <input type="text" id="yPosition" name="yPosition" class="form-control" placeholder="例：2000" required>
+          </div>
+          <div class="form-group-db">
+            <label for="beacon_id"><br></label>
+            <input type="submit" id="beacon-create" name="beacon-create" class="form-control" value="upload">
+          </div>
+        </form>
+        </div>
+
+      </div>
+      <div class="db_el sho_wlist">
+
+      </div>
+    </div>
+  </div>
+</body>
+
+  <script>
+    
+  </script>
+</html>

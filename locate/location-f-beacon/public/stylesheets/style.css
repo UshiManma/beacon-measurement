@@ -1,0 +1,178 @@
+html {
+  height: 100%;
+}
+
+body{
+  height: 100%;
+  background-color: azure;
+}
+
+a {
+  color: #00B7FF;
+}
+
+ul {
+  list-style: none;
+}
+
+
+
+#beacon-status-grid{
+  vertical-align: top;
+  margin-left: 50px;
+}
+
+#beacon-status-lists{
+  display: inline-block;
+  vertical-align: top;
+  /*margin-top: 70PX;*/
+}
+
+#beacon-status-t{
+  margin-left: auto;
+    margin-right: auto;
+    border: 1px solid lightgreen;
+    width: 600px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#beacon-status-child{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 50px;
+}
+#beacon-status-chart1{
+  vertical-align: top;
+  margin-left: 50px;
+  width: 700px;
+}
+
+.child-status{
+  vertical-align: top;
+  display: inline-block;
+}
+
+.newline {
+  line-height: 40px;
+}
+
+#wrap{
+  height: 100%;
+  width: 100%;
+}
+
+
+#side_c{
+  border: 2px solid greenyellow;
+  background-color: black;
+  color: greenyellow;
+  padding-top: 50px;
+  width: 250px;
+  height: 100%;
+  float: left;
+}
+
+#main_c{
+  border: 2px solid greenyellow;
+  background-color: black;
+  color: greenyellow;
+  width: auto;
+  height: 100%;
+  overflow: auto;
+}
+
+#main_db{
+  border: 2px solid greenyellow;
+  background-color: black;
+  color: greenyellow;
+  width: auto;
+  height: 100%;
+  overflow: auto;
+}
+
+#beacon-status{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#table-chart1{
+  width: auto;
+  margin-right: 0px;
+  border-bottom: medium solid greenyellow;
+}
+#table-chart2{
+  margin-right: 0px;
+  border-bottom: medium solid greenyellow;
+}
+#table-chart3{
+  margin-right: 0px;
+  border-bottom: medium solid greenyellow;
+}
+
+#chart-div-value1{
+  float: left;
+  width: 200px;
+}
+#chart-div-value2{
+  float: left;
+  width: 200px;
+}
+#chart-div-value3{
+  float: left;
+  width: 200px;
+}
+
+.chart-div{
+  width: 700px;
+  height: 100%;
+  border: 1px solid magenta;
+  overflow: auto;
+}
+
+
+
+#db{
+  list-style-position: inside;
+  margin-bottom: 20px;
+  list-style-image: url(../images/db.png);
+}
+
+
+#destination{
+  list-style-position: inside;
+  margin-bottom: 20px;
+  list-style-image: url(../images/destination.png);
+}
+
+#measure{
+  list-style-position: inside;
+  margin-bottom: 20px;
+  list-style-image: url(../images/measure.png);
+}
+
+/*db.ejs*/
+
+
+@media all and (min-width: 500px) {
+  #main_db {
+    display: flex;
+  }
+}
+.form-group{
+  float: left;
+}
+
+.form-group-db{
+  float: left;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 35px;
+}
+#crate_input{
+  margin-left: 20px;
+}
+#beacon-create{
+  color: greenyellow;
+  background-color: grey;
+}
